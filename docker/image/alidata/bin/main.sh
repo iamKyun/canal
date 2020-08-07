@@ -12,8 +12,9 @@ for e in $(ls /alidata/init/*) ; do
 done
 
 echo "==> INIT DEFAULT"
-service sshd start
-service crond start
+exec /usr/sbin/init
+systemctl start sshd.service
+systemctl start crond.service
 
 #echo "check hostname -i: `hostname -i`"
 #hti_num=`hostname -i|awk '{print NF}'`
